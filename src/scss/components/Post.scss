@@ -6,25 +6,67 @@
   overflow: hidden;
   width: 100%;
 
-  .post-main-title {
-    font-size: 1rem;
-    max-width: 95%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: $postMainTitleColor;
+  &:hover {
+    .flair {
+      opacity: 1;
+    }
   }
 
-  .post-author-link-wrapper {
-    font-size: 0.7rem;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    color: $transparentWhite;
+  header {
+    display: flex;
+    flex-direction: column;
 
-    > a {
-      text-decoration: underline;
+    .in-row {
+      // ...
     }
+
+    .flair {
+      @include radius;
+      font-size: 0.7rem;
+      display: inline-block;
+      margin-left: 0.5vw;
+      border: solid 1px $transparentWhite;
+      padding: 0 5px;
+      color: $transparentWhite;
+      font-weight: 200;
+      opacity: 0.5;
+      transition: all $medium ease-in-out;
+    }
+
+    .post-main-title {
+      font-size: 1rem;
+      max-width: 95%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: $postMainTitleColor;
+    }
+
+    .post-author-link-wrapper {
+      display: inline;
+      font-size: 0.7rem;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: $transparentWhite;
+
+      > a {
+        text-decoration: underline;
+      }
+    }
+
+    .votes {
+      margin-right: 12px;
+      padding-right: 12px;
+      border-right: solid 1px $transparentWhite;
+      display: inline-block;
+      font-size: 1rem;
+      line-height: 15px;
+    }
+  }
+
+  img.post-thumbnail {
+    display: inline;
   }
 }
