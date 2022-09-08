@@ -83,10 +83,11 @@ pre {
 
     h1 {
       font-size: 2.7rem;
+      color: $transparentWhite;
 
       small {
         font-weight: normal;
-        display: block;
+        display: inline-block;
         font-size: 0.8rem;
         color: $transparentWhite;
         margin-top: -0.8vh;
@@ -101,12 +102,12 @@ pre {
   }
 
   .dynamic-content {
-    flex: 1;
     @include commonPadding();
   }
 
   .footer {
     @include commonPadding();
+    padding-top: 0;
     background-color: $black;
   }
 }
@@ -121,8 +122,7 @@ pre {
 }
 
 .results-wrapper {
-  display: inline-flex;
-  flex-wrap: wrap;
+  display: flex;
   width: 100%;
   gap: 12px;
 }

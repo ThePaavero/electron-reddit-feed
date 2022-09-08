@@ -26,9 +26,19 @@
       margin-bottom: 0.5vh;
 
       .ups {
-        margin-right: 12px;
-        padding-right: 12px;
-        border-right: solid 1px $transparentWhite;
+        &:after {
+          content: '|';
+          display: inline-block;
+          text-align: center;
+          font-size: 0.9rem;
+          width: 25px;
+          color: $transparentWhite;
+          transform: translateY(-1px);
+        }
+
+        .icon {
+          transform: translateY(2px);
+        }
       }
     }
 

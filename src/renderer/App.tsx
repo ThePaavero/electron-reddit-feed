@@ -45,9 +45,9 @@ export default (): JSX.Element => {
     <div className="app-wrapper">
       <div className="header">
         <h1>
-          Reddit Feed{' '}
+          Reddit Feed&nbsp;
           <small>
-            (Subscribed to{' '}
+            (Subscribed to&nbsp;
             <span
               title={
                 config.subs.length
@@ -56,8 +56,8 @@ export default (): JSX.Element => {
               }
             >
               {config.subs ? config.subs.length : 0}
-            </span>{' '}
-            subreddits)
+            </span>
+            &nbsp;subreddits)
           </small>
         </h1>
       </div>

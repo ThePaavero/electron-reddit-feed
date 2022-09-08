@@ -32,11 +32,11 @@ const Post = (data: PostSchema): JSX.Element => {
           </h3>
           <div className="meta">
             <div className="ups">
-              <ArrowUp size={15} color="#67d696" />
+              <ArrowUp size={15} color="#67d696" className="icon" />
               &nbsp;{Math.max(data.ups, data.score)}
             </div>
             <h4 className="post-author-link-wrapper">
-              Posted by{' '}
+              Posted by&nbsp;
               <a href={authorUrl} target="_blank" title={authorUrl}>
                 /u/{data.author}
               </a>
