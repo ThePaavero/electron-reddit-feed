@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import useCrawler from 'renderer/hooks/useCrawler'
-import { PostSchema, SubResultProps } from 'renderer/types/PollTypes'
+import { PostSchema, SubResultProps, SubState } from 'renderer/types/PollTypes'
 import Post from './Post'
 
 const SubResult = ({
@@ -9,7 +9,7 @@ const SubResult = ({
   pollIntervalInMinutes,
   keywords,
 }: SubResultProps): JSX.Element => {
-  const [subState, setSubState] = useState<any>()
+  const [subState, setSubState] = useState<SubState>()
 
   const { tick } = useCrawler(
     {

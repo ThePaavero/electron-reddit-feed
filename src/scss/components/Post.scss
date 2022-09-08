@@ -5,6 +5,8 @@
   margin-bottom: 1vh;
   overflow: hidden;
   width: 100%;
+  border: solid 1px $appBackgroundColor;
+  cursor: pointer;
 
   &:hover {
     .flair {
@@ -17,7 +19,6 @@
     flex-direction: column;
 
     .in-row {
-      // ...
     }
 
     .flair {
@@ -57,16 +58,31 @@
     }
 
     .votes {
+      display: inline-block;
       margin-right: 12px;
       padding-right: 12px;
       border-right: solid 1px $transparentWhite;
-      display: inline-block;
       font-size: 1rem;
       line-height: 15px;
     }
   }
 
+  .selfText {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1rem;
+    font-size: 0.9rem;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
   img.post-thumbnail {
     display: inline;
+  }
+
+  .url-link {
+    text-decoration: underline;
+    font-size: 1rem;
   }
 }
