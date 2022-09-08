@@ -1,4 +1,3 @@
-import moment from 'moment'
 import { useState } from 'react'
 import {
   PostSchema,
@@ -8,7 +7,7 @@ import {
 } from 'renderer/types/PollTypes'
 
 const initialState: SubState = {
-  previousTimestamp: Number(moment().format('X')),
+  previousTimestamp: Date.now(),
   previousLatestPostID: '',
   items: [],
 }
@@ -20,6 +19,7 @@ const useCrawler = (
 ) => {
   console.log('Crawler initialized with config:', config)
 
+  const pollIntervalInMilliseconds = config.pollIntervalInMinutes * 60000
   const [subState, setSubState] = useState(initialState)
 
   const formatChild = (child: RedditPostNativeAPIFormat): PostSchema => {
@@ -54,6 +54,10 @@ const useCrawler = (
     return formatted as PostSchema
   }
 
+  const getNextPollTimestamp = (): number => {
+    return subState.previousTimestamp + pollIntervalInMilliseconds
+  }
+
   const tick = async (): Promise<any> => {
     const response = await fetch(
       `https://www.reddit.com/r/${config.name}/new/.json?limit=${config.itemsOnScreen}`
@@ -74,7 +78,7 @@ const useCrawler = (
     }
 
     const updatedState = {
-      previousTimestamp: Number(moment().format('X')),
+      previousTimestamp: Date.now(),
       previousLatestPostID: items[0].id,
       items,
     }
@@ -82,10 +86,10 @@ const useCrawler = (
     setSubState(updatedState)
     callbackOnUpdate(updatedState)
 
-    setTimeout(tick, config.pollIntervalInMinutes * 60000)
+    setTimeout(tick, pollIntervalInMilliseconds)
   }
 
-  return { tick }
+  return { tick, getNextPollTimestamp }
 }
 
 export default useCrawler

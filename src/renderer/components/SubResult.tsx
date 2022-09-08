@@ -1,7 +1,8 @@
+import { PostSchema, SubResultProps, SubState } from 'renderer/types/PollTypes'
 import { useEffect, useState } from 'react'
 import useCrawler from 'renderer/hooks/useCrawler'
-import { PostSchema, SubResultProps, SubState } from 'renderer/types/PollTypes'
 import Post from './Post'
+import TimeIndicator from './TimeIndicator'
 
 const SubResult = ({
   title,
@@ -11,8 +12,9 @@ const SubResult = ({
   itemsOnScreen,
 }: SubResultProps): JSX.Element => {
   const [subState, setSubState] = useState<SubState>()
+  const [nextPollTimestamp, setNextPollTimestamp] = useState<number>(-1)
 
-  const { tick } = useCrawler(
+  const { tick, getNextPollTimestamp } = useCrawler(
     {
       title,
       name,
@@ -22,6 +24,7 @@ const SubResult = ({
     },
     (data: any): void => {
       setSubState(data)
+      setNextPollTimestamp(getNextPollTimestamp) // Clear syntax, yeah? :D
     },
     (): void => {
       console.log('NEW POST')
@@ -93,6 +96,7 @@ const SubResult = ({
           {title}
         </a>
       </h1>
+      <TimeIndicator nextPollTimestamp={nextPollTimestamp} />
       {getPostCards()}
     </div>
   )
