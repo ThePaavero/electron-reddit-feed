@@ -45,7 +45,8 @@ const SubResult = ({
       <ul>
         {subState.items.map((item: PostSchema) => {
           return (
-            !item.stickied && (
+            !item.stickied &&
+            !item.pinned && (
               <li key={item.id}>
                 <Post
                   id={item.id}
@@ -57,7 +58,6 @@ const SubResult = ({
                   score={item.score}
                   is_self={item.is_self}
                   created_utc={item.created_utc}
-                  pinned={item.pinned}
                   author={item.author}
                   permalink={item.permalink}
                   is_video={item.is_video}

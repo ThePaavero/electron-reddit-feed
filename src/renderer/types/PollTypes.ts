@@ -8,7 +8,6 @@ export interface PostSchema {
   score: number
   is_self: boolean
   created_utc: number
-  pinned: boolean
   author: string
   permalink: string
   is_video: boolean
@@ -17,6 +16,10 @@ export interface PostSchema {
   thumbnail: string
   domain: string
   url: string
+
+  pinned?: boolean
+  stickied?: boolean
+
   [index: string]: any
 }
 
