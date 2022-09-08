@@ -30,18 +30,18 @@ const Post = (data: PostSchema): JSX.Element => {
               <span className="flair">{data.link_flair_text}</span>
             )}
           </h3>
-          <div className="votes">
+          <div className="meta">
             <div className="ups">
               <ArrowUp size={15} color="#67d696" />
               &nbsp;{Math.max(data.ups, data.score)}
             </div>
+            <h4 className="post-author-link-wrapper">
+              Posted by{' '}
+              <a href={authorUrl} target="_blank" title={authorUrl}>
+                /u/{data.author}
+              </a>
+            </h4>
           </div>
-          <h4 className="post-author-link-wrapper">
-            Posted by{' '}
-            <a href={authorUrl} target="_blank" title={authorUrl}>
-              /u/{data.author}
-            </a>
-          </h4>
         </div>
         {data.thumbnail && data.thumbnail.includes('http') && (
           <img

@@ -18,7 +18,18 @@
     display: flex;
     flex-direction: column;
 
-    .in-row {
+    .meta {
+      display: flex;
+      flex-direction: row;
+      font-size: 1rem;
+      line-height: 25px;
+      margin-bottom: 0.5vh;
+
+      .ups {
+        margin-right: 12px;
+        padding-right: 12px;
+        border-right: solid 1px $transparentWhite;
+      }
     }
 
     .flair {
@@ -36,7 +47,7 @@
 
     .post-main-title {
       font-size: 1rem;
-      max-width: 95%;
+      width: 95%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -44,9 +55,7 @@
     }
 
     .post-author-link-wrapper {
-      display: inline;
       font-size: 0.7rem;
-      max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -55,15 +64,6 @@
       > a {
         text-decoration: underline;
       }
-    }
-
-    .votes {
-      display: inline-block;
-      margin-right: 12px;
-      padding-right: 12px;
-      border-right: solid 1px $transparentWhite;
-      font-size: 1rem;
-      line-height: 15px;
     }
   }
 
