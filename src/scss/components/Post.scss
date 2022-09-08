@@ -6,12 +6,25 @@
   overflow: hidden;
   width: 100%;
 
-  h3 {
+  .post-main-title {
     font-size: 1rem;
     max-width: 95%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     color: $postMainTitleColor;
+  }
+
+  .post-author-link-wrapper {
+    font-size: 0.7rem;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: $transparentWhite;
+
+    > a {
+      text-decoration: underline;
+    }
   }
 }
