@@ -12,7 +12,20 @@
   }
 
   h1 {
-    font-size: 1.5rem;
+    a {
+      font-size: 1.5rem;
+
+      small {
+        opacity: 0.5;
+        font-weight: 200;
+        display: inline-block;
+        margin-right: 2px;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   pre {

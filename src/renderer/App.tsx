@@ -7,7 +7,6 @@ import './App.scss'
 import { SubResultProps } from './types/PollTypes'
 
 interface Schema {
-  itemsOnScreen: number
   subs: SubResultProps[]
 }
 
@@ -24,6 +23,7 @@ export default (): JSX.Element => {
       <>
         {config.subs.map((sub) => (
           <SubResult
+            itemsOnScreen={sub.itemsOnScreen}
             key={sub.title}
             title={sub.title}
             name={sub.name}

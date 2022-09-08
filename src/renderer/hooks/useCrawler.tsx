@@ -56,7 +56,7 @@ const useCrawler = (
 
   const tick = async (): Promise<any> => {
     const response = await fetch(
-      `https://www.reddit.com/r/${config.name}/.json?limit=3`
+      `https://www.reddit.com/r/${config.name}/new/.json?limit=${config.itemsOnScreen}`
     )
 
     const responseBody = await response.json()

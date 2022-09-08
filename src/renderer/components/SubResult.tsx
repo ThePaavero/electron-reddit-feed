@@ -8,6 +8,7 @@ const SubResult = ({
   name,
   pollIntervalInMinutes,
   keywords,
+  itemsOnScreen,
 }: SubResultProps): JSX.Element => {
   const [subState, setSubState] = useState<SubState>()
 
@@ -17,6 +18,7 @@ const SubResult = ({
       name,
       pollIntervalInMinutes,
       keywords,
+      itemsOnScreen,
     },
     (data: any): void => {
       setSubState(data)
@@ -77,9 +79,20 @@ const SubResult = ({
     )
   }
 
+  const subUrl = `https://www.reddit.com/r/${name}`
+
   return (
     <div className="SubResult">
-      <h1>{title}</h1>
+      <h1>
+        <a
+          href={subUrl}
+          target="_blank"
+          title={`Visit subreddit "${name}"\n(${subUrl})`}
+        >
+          <small>/r/</small>
+          {title}
+        </a>
+      </h1>
       {getPostCards()}
     </div>
   )

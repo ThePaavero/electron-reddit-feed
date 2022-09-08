@@ -28,6 +28,7 @@ export interface RedditPostNativeAPIFormat {
 }
 
 export type SubResultProps = {
+  itemsOnScreen: number
   title: string
   name: string
   pollIntervalInMinutes: number
