@@ -1,0 +1,34 @@
+@mixin commonPadding() {
+  padding: 1vh 2vw;
+}
+
+@mixin commonPaddingSmall() {
+  padding: 0.3vh 0.5vw;
+}
+
+@mixin radius() {
+  border-radius: 4px;
+}
+
+@mixin infoBox() {
+  background-color: $infoBoxBackgroundColor;
+  border: solid 2px $mainTextColor;
+  max-width: 70vw;
+  @include radius();
+  @include commonPadding();
+
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+
+  &.alert {
+    background-color: $alertBackgroundColor;
+  }
+}
+
+@mixin smaller() {
+  @media all and (max-width: 1275px) {
+    @content;
+  }
+}

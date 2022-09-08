@@ -1,0 +1,26 @@
+{
+  "itemsOnScreen": 3,
+  "subs": [
+    {
+      "title": "Suomi",
+      "name": "suomi",
+      "pollIntervalInMinutes": 5,
+      "postsAmountToShow": 3,
+      "keywords": []
+    },
+    {
+      "title": "All",
+      "name": "all",
+      "pollIntervalInMinutes": 5,
+      "postsAmountToShow": 3,
+      "keywords": []
+    },
+    {
+      "title": "Aww",
+      "name": "aww",
+      "pollIntervalInMinutes": 5,
+      "postsAmountToShow": 3,
+      "keywords": []
+    }
+  ]
+}

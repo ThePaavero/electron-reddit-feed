@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;700&display=swap');
+@import './../scss/transitions.scss';
+@import './../scss/colors.scss';
+@import './../scss/mixins/common.scss';
+@import './../scss/buttons.scss';
+@import './../scss/components/Post.scss';
+@import './../scss/components/Configuration.scss';
+@import './../scss/components/ConfigHelpMessage.scss';
+@import './../scss/components/SubResult.scss';
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: inherit;
+  list-style: none;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $appBackgroundColor;
+  color: $mainTextColor;
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.7vw;
+  @media all and (max-width: 860px) {
+    font-size: 16px;
+  }
+  @media all and (max-height: 500px) {
+    font-size: 16px;
+  }
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+pre {
+  font-size: 14px;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  cursor: default;
+
+  .header {
+    @include commonPadding();
+
+    h1 {
+      font-size: 2.7rem;
+
+      small {
+        font-weight: normal;
+        display: block;
+        font-size: 0.8rem;
+        color: $transparentWhite;
+        margin-top: -0.8vh;
+
+        span {
+          font-size: 1rem;
+          font-weight: 700;
+          color: $mainTextColor;
+        }
+      }
+    }
+  }
+
+  .dynamic-content {
+    flex: 1;
+    @include commonPadding();
+  }
+
+  .footer {
+    @include commonPadding();
+    background-color: $black;
+  }
+}
+
+.fade {
+  opacity: 0;
+  transition: opacity $medium ease-in-out;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+.results-wrapper {
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 12px;
+}

@@ -1,0 +1,47 @@
+button {
+  border: none;
+  background-color: $buttonBackgroundColor;
+  color: $white;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.4);
+  transition: all $medium ease-in-out;
+  font-weight: 700;
+
+  &:hover {
+    background-color: $buttonBackgroundColorHover;
+  }
+
+  &:active {
+    background-color: $buttonBackgroundColorClicked;
+  }
+
+  &.tiny {
+    font-size: 0.6rem;
+  }
+  &.small {
+    font-size: 0.8rem;
+  }
+  &.medium {
+    font-size: 1rem;
+    &:hover {
+      transform: scale(1.06);
+    }
+  }
+  &.large {
+    font-size: 1.5rem;
+  }
+  &.huge {
+    font-size: 2rem;
+  }
+}
+
+.subtle-link {
+  font-size: inherit;
+  font-family: inherit;
+  text-decoration: inherit;
+  text-decoration: inherit;
+  color: inherit;
+}

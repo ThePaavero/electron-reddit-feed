@@ -1,0 +1,16 @@
+.Post {
+  @include radius;
+  @include commonPaddingSmall;
+  background-color: $postBackgroundColor;
+  margin-bottom: 1vh;
+  overflow: hidden;
+  width: 100%;
+
+  h3 {
+    font-size: 1rem;
+    max-width: 95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

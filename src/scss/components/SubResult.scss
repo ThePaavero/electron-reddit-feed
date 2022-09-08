@@ -1,0 +1,21 @@
+.SubResult {
+  @include radius;
+  @include commonPadding;
+  width: 32.5%;
+  min-width: 400px;
+  align-self: flex-start;
+  background-color: $black;
+
+  @include smaller() {
+    width: 100%;
+    min-width: 0;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  pre {
+    font-size: 0.7rem;
+  }
+}
