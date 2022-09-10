@@ -14,12 +14,14 @@ const initialState: SubState = {
 
 const useCrawler = (
   config: SubResultProps,
-  callbackOnUpdate: (data: any) => void,
+  callbackOnUpdate: (data: SubState) => void,
   callbackOnNew: () => void
 ) => {
   console.log('Crawler initialized with config:', config)
 
-  const pollIntervalInMilliseconds = config.pollIntervalInMinutes * 60000
+  const pollIntervalInMilliseconds = Math.floor(
+    config.pollIntervalInMinutes * 60000
+  )
   const [subState, setSubState] = useState(initialState)
 
   const formatChild = (child: RedditPostNativeAPIFormat): PostSchema => {
@@ -54,10 +56,6 @@ const useCrawler = (
     return formatted as PostSchema
   }
 
-  const getNextPollTimestamp = (): number => {
-    return subState.previousTimestamp + pollIntervalInMilliseconds
-  }
-
   const tick = async (): Promise<any> => {
     const response = await fetch(
       `https://www.reddit.com/r/${config.name}/new/.json?limit=${config.itemsOnScreen}`
@@ -65,11 +63,7 @@ const useCrawler = (
 
     const responseBody = await response.json()
 
-    const items = responseBody.data.children.map(
-      (child: RedditPostNativeAPIFormat) => {
-        return formatChild(child)
-      }
-    )
+    const items: PostSchema[] = responseBody.data.children.map(formatChild)
 
     const latestPostID = items[0].id
 
@@ -77,7 +71,7 @@ const useCrawler = (
       callbackOnNew()
     }
 
-    const updatedState = {
+    const updatedState: SubState = {
       previousTimestamp: Date.now(),
       previousLatestPostID: items[0].id,
       items,
@@ -89,7 +83,7 @@ const useCrawler = (
     setTimeout(tick, pollIntervalInMilliseconds)
   }
 
-  return { tick, getNextPollTimestamp }
+  return { tick }
 }
 
 export default useCrawler

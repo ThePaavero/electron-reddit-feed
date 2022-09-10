@@ -12,9 +12,15 @@ const SubResult = ({
   itemsOnScreen,
 }: SubResultProps): JSX.Element => {
   const [subState, setSubState] = useState<SubState>()
-  const [nextPollTimestamp, setNextPollTimestamp] = useState<number>(-1)
+  const [nextPollTimestamp, setNextPollTimestamp] = useState<number>(
+    Date.now() + pollIntervalInMinutes * 6000
+  )
 
-  const { tick, getNextPollTimestamp } = useCrawler(
+  const getNextPollTimestamp = (): number => {
+    return Number(Date.now()) + pollIntervalInMinutes * 6000
+  }
+
+  const { tick } = useCrawler(
     {
       title,
       name,
@@ -22,9 +28,9 @@ const SubResult = ({
       keywords,
       itemsOnScreen,
     },
-    (data: any): void => {
+    (data: SubState): void => {
       setSubState(data)
-      setNextPollTimestamp(getNextPollTimestamp) // Clear syntax, yeah? :D
+      setNextPollTimestamp(getNextPollTimestamp())
     },
     (): void => {
       console.log('NEW POST')
@@ -33,7 +39,7 @@ const SubResult = ({
 
   useEffect(() => {
     tick()
-      .then((data: any) => {
+      .then((data: SubState) => {
         if (data) {
           setSubState(data)
         }

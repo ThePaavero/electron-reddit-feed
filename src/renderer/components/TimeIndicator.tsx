@@ -4,25 +4,25 @@ export type TimeIndicatorProps = {
   nextPollTimestamp: number
 }
 
-const millisecondsToFlooredSeconds = (ms: number): number => {
-  return Math.floor(ms / 1000)
+const millisecondsToSecondsRounded = (ms: number): number => {
+  return Math.round(ms / 1000)
 }
 
 const TimeIndicator = ({
   nextPollTimestamp,
 }: TimeIndicatorProps): JSX.Element => {
-  if (nextPollTimestamp === -1) {
-    return <></>
-  }
-
   const [secondsToNext, setSecondsToNext] = useState<number>(
-    nextPollTimestamp / 1000
+    millisecondsToSecondsRounded(nextPollTimestamp)
   )
 
   const tick = () => {
-    const millisecondsToNext = nextPollTimestamp - Date.now()
-    setSecondsToNext(millisecondsToFlooredSeconds(millisecondsToNext))
+    console.log('nextPollTimestamp:', nextPollTimestamp)
+    console.log('Date.now():', Date.now())
+    console.log('-------')
+
+    const millisecondsToNext = Math.round(nextPollTimestamp - Date.now())
     setTimeout(tick, 1000)
+    setSecondsToNext(millisecondsToSecondsRounded(millisecondsToNext))
   }
 
   useEffect(tick, [])
