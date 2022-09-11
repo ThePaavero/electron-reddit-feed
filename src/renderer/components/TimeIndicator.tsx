@@ -17,7 +17,7 @@ const TimeIndicator = ({
     setTimeout(tick, tickInterval)
   }
 
-  useEffect(tick, [nextPollTimestamp])
+  useEffect(tick, [])
 
   return (
     <div className="TimeIndicator">
