@@ -12,13 +12,6 @@ const SubResult = ({
   itemsOnScreen,
 }: SubResultProps): JSX.Element => {
   const [subState, setSubState] = useState<SubState>()
-  const [nextPollTimestamp, setNextPollTimestamp] = useState<number>(
-    Date.now() + pollIntervalInMinutes * 6000
-  )
-
-  const getNextPollTimestamp = (): number => {
-    return Number(Date.now()) + pollIntervalInMinutes * 6000
-  }
 
   const { tick } = useCrawler(
     {
@@ -30,7 +23,6 @@ const SubResult = ({
     },
     (data: SubState): void => {
       setSubState(data)
-      setNextPollTimestamp(getNextPollTimestamp())
     },
     (): void => {
       console.log('NEW POST')
@@ -102,7 +94,9 @@ const SubResult = ({
           {title}
         </a>
       </h1>
-      <TimeIndicator nextPollTimestamp={nextPollTimestamp} />
+      {subState?.nextPollTimestamp && (
+        <TimeIndicator nextPollTimestamp={subState.nextPollTimestamp} />
+      )}
       {getPostCards()}
     </div>
   )

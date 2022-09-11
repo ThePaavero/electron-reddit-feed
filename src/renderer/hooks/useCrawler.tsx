@@ -9,6 +9,7 @@ import {
 const initialState: SubState = {
   previousTimestamp: Date.now(),
   previousLatestPostID: '',
+  nextPollTimestamp: 0,
   items: [],
 }
 
@@ -74,6 +75,7 @@ const useCrawler = (
     const updatedState: SubState = {
       previousTimestamp: Date.now(),
       previousLatestPostID: items[0].id,
+      nextPollTimestamp: Date.now() + pollIntervalInMilliseconds,
       items,
     }
 

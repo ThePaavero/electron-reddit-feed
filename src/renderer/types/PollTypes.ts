@@ -38,5 +38,6 @@ export type SubResultProps = {
 export type SubState = {
   previousTimestamp: number
   previousLatestPostID: string
+  nextPollTimestamp: number
   items: PostSchema[]
 }
