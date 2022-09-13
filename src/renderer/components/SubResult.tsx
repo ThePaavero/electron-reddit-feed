@@ -12,6 +12,7 @@ const SubResult = ({
   itemsOnScreen,
 }: SubResultProps): JSX.Element => {
   const [subState, setSubState] = useState<SubState>()
+  const [previousLatestPostID, setPreviousLatestPostID] = useState<string>()
 
   const { tick } = useCrawler(
     {
@@ -23,9 +24,7 @@ const SubResult = ({
     },
     (data: SubState): void => {
       setSubState(data)
-    },
-    (): void => {
-      console.log('NEW POST')
+      setPreviousLatestPostID(data.items[0].id)
     }
   )
 
@@ -72,6 +71,15 @@ const SubResult = ({
     ) : (
       <div className="no-data">No posts</div>
     )
+  }
+
+  console.log('**********')
+  console.log('subState?.items[0].id:', subState?.items[0].id)
+  console.log('previousLatestPostID:', previousLatestPostID)
+  console.log('**********')
+
+  if (subState?.items[0].id !== previousLatestPostID) {
+    console.log('NEW POST!')
   }
 
   const subUrl = `https://www.reddit.com/r/${name}`

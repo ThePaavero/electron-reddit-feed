@@ -8,15 +8,13 @@ import {
 
 const initialState: SubState = {
   previousTimestamp: Date.now(),
-  previousLatestPostID: '',
   nextPollTimestamp: 0,
   items: [],
 }
 
 const useCrawler = (
   config: SubResultProps,
-  callbackOnUpdate: (data: SubState) => void,
-  callbackOnNew: () => void
+  callbackOnUpdate: (data: SubState) => void
 ) => {
   console.log('Crawler initialized with config:', config)
 
@@ -66,15 +64,8 @@ const useCrawler = (
 
     const items: PostSchema[] = responseBody.data.children.map(formatChild)
 
-    const latestPostID = items[0].id
-
-    if (latestPostID !== subState.previousLatestPostID) {
-      callbackOnNew()
-    }
-
     const updatedState: SubState = {
       previousTimestamp: Date.now(),
-      previousLatestPostID: items[0].id,
       nextPollTimestamp: Date.now() + pollIntervalInMilliseconds,
       items,
     }
