@@ -7,6 +7,7 @@ const TimeIndicator = ({
 }: TimeIndicatorProps): JSX.Element => {
   const [secondsToNext, setSecondsToNext] = useState<number>(0)
   const [tickInterval, setTickInterval] = useState<number>(1000)
+  const [timeoutID, setTimeoutID] = useState<number>(0)
 
   const tick = () => {
     const secondsToNextCalculated = Math.floor(
@@ -14,10 +15,14 @@ const TimeIndicator = ({
     )
     setSecondsToNext(secondsToNextCalculated)
     setTickInterval(secondsToNextCalculated < 60 ? 1000 : 5999)
-    setTimeout(tick, tickInterval)
+    setTimeoutID(Number(setTimeout(tick, tickInterval)))
   }
 
-  useEffect(tick, [])
+  useEffect(tick, [nextPollTimestamp])
+
+  if (secondsToNext === 0 && timeoutID > 0) {
+    clearTimeout(timeoutID)
+  }
 
   return (
     <div className="TimeIndicator">

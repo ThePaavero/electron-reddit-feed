@@ -31,12 +31,6 @@ const SubResult = ({
 
   useEffect(() => {
     tick()
-      .then((data: SubState) => {
-        if (data) {
-          setSubState(data)
-        }
-      })
-      .catch((err) => console.warn(err))
   }, [])
 
   const getPostCards = () => {
