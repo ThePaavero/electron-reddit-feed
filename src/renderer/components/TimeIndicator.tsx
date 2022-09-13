@@ -25,7 +25,7 @@ const TimeIndicator = ({
       {secondsToNext < 60
         ? `${secondsToNext} seconds...`
         : `${Math.round(secondsToNext / 60)} minute${
-            secondsToNext > 1 ? 's' : ''
+            secondsToNext > 120 ? 's' : ''
           }...`}
     </div>
   )
